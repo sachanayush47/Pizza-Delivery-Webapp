@@ -1,0 +1,56 @@
+@import "./variables";
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: $dark;
+}
+
+nav li:last-child a {
+    background-color: $primary;
+    &:hover {
+        background-color: $primary-hover;
+    }
+}
+
+nav li a{
+    &:hover {
+        color: $primary;
+    }
+}
+
+.add-to-cart {
+    border: 2px solid $primary;
+    color: $primary;
+    &:hover {
+        background-color: $primary;
+        border-color: $pure;
+        color: $pure;
+    }
+}
+
+.btn-primary {
+    background-color: $primary;
+    &:hover {
+        background-color: $primary-hover;
+    }
+}
+
+section.cart {
+    .amount {
+        color: $primary;
+    }
+}
+
+section.login, section.register {
+    a {
+        color: $primary;
+        &:hover {
+            color: $primary-hover;
+        }
+    }
+}
