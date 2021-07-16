@@ -28,17 +28,19 @@ passport.use(new LocalStrategy({ usernameField: "email"}, (email, password, done
 
 }));
 
+// Adding the user to session.
 passport.serializeUser((user, done) => {
-    done(null, user.id)
+    done(null, user._id)
 });
 
+// Fetching the user from session.
 passport.deserializeUser((id, done) => {
     User.findById(id, (err, user) => {
         done(err, user);
     })
 });
 
-// Check if the user is authenticated.
+// Middleware: check if the user is authenticated.
 passport.checkAuthentication = function(req, res, next) {
     // If the user is signed in, then pass on the next function.
     if(req.isAuthenticated()) {

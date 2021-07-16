@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const homeControllers = require("../App/http/controllers/homeController");
-const cartControllers = require("../App/http/controllers/customer/cartController");
 
 // For auth related.
 router.use("/auth", require("./auth"));

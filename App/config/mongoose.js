@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+// If database does not exist, it will create one.
 const url = "mongodb://localhost/pizzaDB";
 
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: true});

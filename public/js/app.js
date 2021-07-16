@@ -5287,12 +5287,13 @@ __webpack_require__.r(__webpack_exports__);
 console.log("Jai Shree Ram");
 var addToCart = document.querySelectorAll(".add-to-cart");
 var cartCounter = document.getElementById("cartCounter");
-console.log(addToCart);
+console.log(addToCart); // Function to update the cart items.
 
 function updateCart(pizza) {
   axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("/cart/update-cart", pizza).then(function (res) {
     console.log(res);
-    cartCounter.innerText = res.data.totalQty;
+    cartCounter.innerText = res.data.totalQty; // For visualization
+
     new noty__WEBPACK_IMPORTED_MODULE_1___default.a({
       type: "success",
       timeout: 2000,
@@ -5307,7 +5308,8 @@ function updateCart(pizza) {
       text: "Failed to add item. Try again!"
     }).show();
   });
-}
+} // Adding event listener to all the button having class .add-to-cart
+
 
 addToCart.forEach(function (btn) {
   btn.addEventListener("click", function (e) {

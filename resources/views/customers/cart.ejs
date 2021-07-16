@@ -19,7 +19,7 @@
                             </span>
                         </div>
                         <span class="flex-1">
-                            <%= i.qty %>Pcs
+                            <%= i.qty %> Pcs
                         </span>
                         <span class="text-lg font-bold">₹<%= i.item.price * i.qty %></span>
                     </div>
@@ -32,18 +32,22 @@
                             <span class="text-lg font-bold mr-2">Total amount:</span>
                             <span class="amount text-2xl font-bold">₹<%= session.cart.totalPrice %></span>
                         </div>
+                        <% if(user) { %>
                         <div>
                             <form action="">
                                 <input class="border border-gray-400 p-1 w-1/2 m-2 rounded-md" type="tel"
                                     placeholder="Phone" required>
-                                <input class="border border-gray-400 p-1 w-4/5 m-2  rounded-md" type="text"
+                                <input class="border border-gray-400 p-1 w-1/2 m-2  rounded-md" type="text"
                                     placeholder="Address" required>
-                                <!-- <button class="btn-primary px-6 py-2 rounded-full text-white" type="submit">Order Now</button> -->
+                                    <br>
+                                <button class="btn-primary px-6 py-2 rounded-full text-white" type="submit">Order Now</button>
                             </form>
                         </div>
+                        <% } else { %>
                         <a class="btn-primary inline-block cursor-pointer px-6 py-2 rounded-full text-white font-bold"
-                            href="">Login to continue</a>
-                    </div>
+                            href="/auth/login">Login to continue</a>
+                        <% } %>
+                        </div>
         </div>
     </section>
 

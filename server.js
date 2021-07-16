@@ -1,16 +1,19 @@
 require("dotenv").config();
 const express = require("express");
-const expressLayouts = require("express-ejs-layouts");
 const passport = require("passport");
-const passportLocal = require("./App/config/paasport-local-strategy");
 
+const expressLayouts = require("express-ejs-layouts");
+const path = require("path");
 const flash = require("express-flash");
+
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
-const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 8000;
+
+// Accique the passport local strategy configuration.
+const passportLocal = require("./App/config/paasport-local-strategy");
 
 // Acquire databse connection.
 const db = require("./App/config/mongoose");
@@ -29,8 +32,8 @@ app.use(session({
         console.log("Error in connecting with mongo-store: ", err);
     }),
     cookie: {
-        // Age of cookie, currently set to 15 days.
-        maxAge: 1000 * 60 * 60 * 24 * 15
+        // Age of cookie, currently set to 7 days.
+        maxAge: 3600000 * 24 * 7
     },
 
 }));
@@ -39,18 +42,19 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
+// Flashing the messages.
 app.use(flash());
 
 // Assets.
 app.use(express.static("public"));
 
+// Decode the form data.
 app.use(express.urlencoded({ extended: false }))
 
 // Parses the JSON to javascript object.
 app.use(express.json());
 
-// Global middleware
+// Global middleware.
 app.use((req, res, next) => {
     res.locals.session = req.session;
     res.locals.user = req.user;
@@ -65,6 +69,7 @@ app.set("views", path.join("resources", "views"));
 // Using express routers.
 app.use("/", require("./routes/web"));
 
+// Listening at PORT.
 app.listen(PORT, () => {
     console.log("Server running on port", PORT);
 });

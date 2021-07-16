@@ -1,9 +1,13 @@
 module.exports = {
+
+    // Render the page.
     cart: (req, res) => {
         res.render("customers/cart", {
             title: "Cart"
         });
     },
+
+    // Add the item to the cart.
     update: (req, res) => {
         console.log("Session");
         console.log(req.session);
