@@ -12,7 +12,7 @@ const MongoStore = require("connect-mongo")(session);
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-// Accique the passport local strategy configuration.
+// Acquire the passport local strategy configuration.
 const passportLocal = require("./App/config/paasport-local-strategy");
 
 // Acquire databse connection.
